@@ -1,28 +1,27 @@
 // CECS346 Project1: Traffic light controller with FSM
 // Student Name:Brandon Jamjampour,Daniel Banuelos, Anastacia Estrella
 // Lab description:Implementing a FSM Traffic light controller using two Ports
-which were port B and the on board Leds PortF green and red
+//which were port B and the on board Leds PortF green and red
 //for the ped to walk or stop, and used port B to control 6 leds for south
-direction of cars and west direction of cars and
+//direction of cars and west direction of cars and
 //3 sensors to detect a car on south a car on west or a ped depending on the inputs
-the traffic light controller would allow
+//the traffic light controller would allow
 //cars to go and share or let the ped walk across safely, also implementing a flash
-element to tell the ped that they are
+//element to tell the ped that they are
 //running out of time to cross
 // Hardware Design
 // 1) Port B will be used to control 6 LEDs: (PB5) Red west, (PB4) Yellow West,
-(PB3) Green West,
+//(PB3) Green West,
 //(PB2) Red South, (PB1) Yellow South, (PB0) Green South
 //Port F will be Pedistrain Light for the onboard leds
 //(PF3) Green led for ped to walk (PB1) Red to not let ped and flash to hurry up
 // 2) Port E will be used for the 3 switches/sensors: (PE2) South, West (PE1), Ped
-Sensor (PE0)
+//Sensor (PE0)
 #include <stdint.h> // for data type alias
 // Registers for switches
 // Complete the following register definitions
 // Registers for sensor port E sensor
-#define SENSOR (*((volatile
-unsigned long *)0x4002401C)) //portE bit addresses PE2 - PE0
+#define SENSOR (*((volatile unsigned long *)0x4002401C)) //portE bit addresses PE2 - PE0
 #define GPIO_PORTE_DATA_R (*((volatile unsigned long *)0x400243FC))
 #define GPIO_PORTE_DIR_R (*((volatile unsigned long *)0x40024400))
 #define GPIO_PORTE_AFSEL_R (*((volatile unsigned long *)0x40024420))
@@ -31,7 +30,7 @@ unsigned long *)0x4002401C)) //portE bit addresses PE2 - PE0
 #define GPIO_PORTE_PCTL_R (*((volatile unsigned long *)0x4002452C))
 //// Registers for LEDs traffic light port B
 #define T_LIGHT (*((volatile unsigned long *)0x400050FC)) // bit
-addresses for the four LEDs on PB5 - PB0
+//addresses for the four LEDs on PB5 - PB0
 #define GPIO_PORTB_DIR_R (*((volatile unsigned long *)0x40005400))
 #define GPIO_PORTB_AFSEL_R (*((volatile unsigned long *)0x40005420))
 #define GPIO_PORTB_DEN_R (*((volatile unsigned long *)0x4000551C))
@@ -46,8 +45,7 @@ addresses for the four LEDs on PB5 - PB0
 #define GPIO_PORTF_AMSEL_R (*((volatile unsigned long *)0x40025528))
 #define GPIO_PORTF_PCTL_R (*((volatile unsigned long *)0x4002552C))
 // Constants definitions SysTick
-#define NVIC_ST_CTRL_R (*((volatile unsigned long
-*)0xE000E010))
+#define NVIC_ST_CTRL_R (*((volatile unsigned long*)0xE000E010))
 #define NVIC_ST_RELOAD_R (*((volatile unsigned long *)0xE000E014))
 #define NVIC_ST_CURRENT_R (*((volatile unsigned long *)0xE000E018))
 #define NVIC_ST_CTRL_COUNT 0x00010000
